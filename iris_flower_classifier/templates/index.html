@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iris Flower Classifier 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #e0e5ec;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #e0e5ec;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow:  10px 10px 30px #bebebe,
+                         -10px -10px 30px #ffffff;
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            text-align: left;
+            color: #444;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 12px;
+            background: #e0e5ec;
+            box-shadow: inset 5px 5px 10px #bebebe,
+                        inset -5px -5px 10px #ffffff;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 15px;
+            color: #fff;
+            background: linear-gradient(145deg, #6a11cb, #2575fc);
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+            background: linear-gradient(145deg, #2575fc, #6a11cb);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 12px;
+            background: #e0e5ec;
+            box-shadow: inset 5px 5px 15px #bebebe,
+                        inset -5px -5px 15px #ffffff;
+            font-size: 16px;
+            color: #0a6c42;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🌺 Iris Species Classifier</h2>
+        <form action="/predict" method="POST">
+            <label>Sepal Length (cm)</label>
+            <input type="text" name="sepal_length" required>
+
+            <label>Sepal Width (cm)</label>
+            <input type="text" name="sepal_width" required>
+
+            <label>Petal Length (cm)</label>
+            <input type="text" name="petal_length" required>
+
+            <label>Petal Width (cm)</label>
+            <input type="text" name="petal_width" required>
+
+            <button type="submit">🌸 Predict</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+
+        <div class="footer">Built with Flask + ML | UI: Neumorphism ✨</div>
+    </div>
+</body>
+</html>
